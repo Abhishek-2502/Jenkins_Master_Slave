@@ -37,9 +37,5 @@ pipeline {
             echo 'Pipeline failed. Check logs.'
             sh "docker logs $CONTAINER_NAME || true"
         }
-        always {
-            echo 'Cleaning up...'
-            sh "docker rm -f $CONTAINER_NAME || true"
-        }
     }
 }
