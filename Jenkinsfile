@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'private_repo' }
+    agent { label 'master_slave' }
 
     environment {
         IMAGE_NAME = 'flask-app'
