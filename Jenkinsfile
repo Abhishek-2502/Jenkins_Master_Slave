@@ -14,6 +14,18 @@ pipeline {
             }
         }
 
+        stage('Clean Up Old Container') {
+            steps {
+                echo 'Stopping and removing any existing container...'
+                sh """
+                    if [ \$(docker ps -a -q -f name=$CONTAINER_NAME) ]; then
+                        docker stop $CONTAINER_NAME || true
+                        docker rm $CONTAINER_NAME || true
+                    fi
+                """
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
