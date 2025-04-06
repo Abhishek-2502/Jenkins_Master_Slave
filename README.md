@@ -30,7 +30,7 @@ This guide provides step-by-step instructions to set up a Jenkins Master-Slave a
 - **Usage**: `Use this node as much as possible`
 
 ### NOTE:
-Use git repo link while setting Jenkins as:
+Use git repo link while setting Jenkins as if your repo is private:
 ```bash
 git@github.com:Abhishek-2502/Jenkins_Master_Slave.git
 ```
