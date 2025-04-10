@@ -84,9 +84,9 @@ git@github.com:Abhishek-2502/Jenkins_Master_Slave.git
      - **Kind**: `SSH Username with private key`
      - **Scope**: `Global (Jenkins, nodes, items, all child items, etc)`
      - **ID**: `master-slave`
-     - **Description**: `This is private ID of Jenkins master.`
+     - **Description**: `This is private key of slave.`
      - **Username**: `ubuntu` (EC2 default username)
-     - **Private Key**: Paste the private key of Jenkins master from `-----BEGIN OPENSSH PRIVATE KEY-----` to `-----END OPENSSH PRIVATE KEY-----`. (From Step 1)
+     - **Private Key**: Paste the private key of slave from `-----BEGIN OPENSSH PRIVATE KEY-----` to `-----END OPENSSH PRIVATE KEY-----`. (Refer to **Step 2** of the guide: [Node_Todo_App_Docker_Jenkins_FreeStyle](https://github.com/Abhishek-2502/Node_Todo_App_Docker_Jenkins_FreeStyle))
 
 ### Security and Availability:
 - **Host Key Verification Strategy**: `Non verifying Verification Strategy`
@@ -99,6 +99,8 @@ git@github.com:Abhishek-2502/Jenkins_Master_Slave.git
 
 ## Step 5: Setup Declarative Pipeline
 Follow this guide to setup Project in Jenkins Master using Declarative Pipeline: [Django_Notes_App_Docker_Jenkins_Declarative](https://github.com/Abhishek-2502/Django_Notes_App_Docker_Jenkins_Declarative)
+
+**Note:** Use SSH Key of Jenkins master (Step 1) while setting up pipeline.
 
 ## Author
 Abhishek Rajput
