@@ -59,31 +59,35 @@ To obtain the ed25519 private and public key of the EC2 instance,
 ```bash
 ssh-keygen -t ed25519 -C "abhishek25022004@gmail.com"
 ```
+### 2. **Create SSH Folder**
+```bash
+sudo mkdir -p /var/lib/jenkins/.ssh
+sudo chown jenkins:jenkins /var/lib/jenkins/.ssh
+sudo chmod 700 /var/lib/jenkins/.ssh
+```
 
-### 2. **Move Keys to Jenkins Directory**
+### 3. **Move Keys to Jenkins Directory**
 ```bash
 sudo cp ~/.ssh/id_ed25519* /var/lib/jenkins/.ssh/
 ```
 
-### 3. **Add GitHub to Known Hosts**
+### 4. **Add GitHub to Known Hosts**
 ```bash
 sudo ssh-keyscan github.com | sudo tee -a /var/lib/jenkins/.ssh/known_hosts
 ```
 
-### 4. **Set Permissions**
+### 5. **Set more Permissions**
 ```bash
-sudo chown -R jenkins:jenkins /var/lib/jenkins/.ssh
-sudo chmod 700 /var/lib/jenkins/.ssh
 sudo chmod 600 /var/lib/jenkins/.ssh/id_ed25519
-sudo chmod 644 /var/lib/jenkins/.ssh/id_ed25519.pub known_hosts
+sudo chmod 644 /var/lib/jenkins/.ssh/id_ed25519.pub /var/lib/jenkins/.ssh/known_hosts
 ```
 
-### 5. **Restart Jenkins**
+### 6. **Restart Jenkins**
 ```bash
 sudo systemctl restart jenkins
 ```
 
-### 6. **Use Keys**
+### 7. **Use Keys**
 - Add public key (`cat ~/.ssh/id_ed25519.pub`) to **GitHub SSH and GPG Keys in Settings**.
 - Add private key (`cat ~/.ssh/id_ed25519`) in **Jenkins Credentials of Step 2**.
 
