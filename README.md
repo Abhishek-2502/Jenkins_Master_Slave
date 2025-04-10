@@ -12,47 +12,8 @@ This guide provides step-by-step instructions to set up a Jenkins Master-Slave a
 - Docker and Docker-Compose on Slave.
 - Follow this guide to install Jenkins, Java, Docker and Docker-Compose: [Java_Jenkins_Docker_Setup_AWS](https://github.com/Abhishek-2502/Java_Jenkins_Docker_Setup_AWS)
 
-## Step 1: Configure Jenkins Master
 
-1. Log in to Jenkins Master.
-2. Navigate to **Manage Jenkins** -> **Nodes**.
-3. Click **New Node**.
-4. Enter the node name: `Master-Slave`.
-5. Select **Permanent Agent** and click **Create**.
-
-## Step 2: Configure Node (Slave)
-
-### General Settings:
-- **Description**: `This node is for Master Slave Architecture Testing.`
-- **Number of Executors**: `1` (Since t2.micro has 1 processor)
-- **Remote Root Directory**: `/home/ubuntu/`
-- **Labels**: `master_slave`
-- **Usage**: `Use this node as much as possible`
-
-### NOTE:
-Use git repo link while setting Jenkins as if your repo is private:
-```bash
-git@github.com:Abhishek-2502/Jenkins_Master_Slave.git
-```
-
-### Launch Method:
-1. Select **Launch agents via SSH**.
-2. Provide the following details:
-   - **Host**: Public IP of Slave EC2 instance.
-   - **Credentials**:
-     - **Domain**: `Global credentials (unrestricted)`
-     - **Kind**: `SSH Username with private key`
-     - **Scope**: `Global (Jenkins, nodes, items, all child items, etc)`
-     - **ID**: `master-slave`
-     - **Description**: `This is private ID of Jenkins master.`
-     - **Username**: `ubuntu` (EC2 default username)
-     - **Private Key**: Paste the private key of Jenkins master from `-----BEGIN OPENSSH PRIVATE KEY-----` to `-----END OPENSSH PRIVATE KEY-----`. (From Step 3)
-
-### Security and Availability:
-- **Host Key Verification Strategy**: `Non verifying Verification Strategy`
-- **Availability**: `Keep this agent online as much as possible`
-
-## Step 3: Get SSH Key (ed25519)
+## Step 1: Get SSH Key in Jenkins-Master (ed25519)
 To obtain the ed25519 private and public key of the EC2 instance,
 
 ### 1. **Generate SSH Key on Jenkins Master**
@@ -89,7 +50,47 @@ sudo systemctl restart jenkins
 
 ### 7. **Use Keys**
 - Add public key (`cat ~/.ssh/id_ed25519.pub`) to **GitHub SSH and GPG Keys in Settings**.
-- Add private key (`cat ~/.ssh/id_ed25519`) in **Jenkins Credentials of Step 2**.
+- Add private key (`cat ~/.ssh/id_ed25519`) in **Jenkins Credentials of Step 3**.
+  
+## Step 2: Configure Jenkins Master
+
+1. Log in to Jenkins Master.
+2. Navigate to **Manage Jenkins** -> **Nodes**.
+3. Click **New Node**.
+4. Enter the node name: `Master-Slave`.
+5. Select **Permanent Agent** and click **Create**.
+
+## Step 3: Configure Node (Slave)
+
+### General Settings:
+- **Description**: `This node is for Master Slave Architecture Testing.`
+- **Number of Executors**: `1` (Since t2.micro has 1 processor)
+- **Remote Root Directory**: `/home/ubuntu/`
+- **Labels**: `master_slave`
+- **Usage**: `Use this node as much as possible`
+
+### NOTE:
+Use git repo link while setting Jenkins as if your repo is private:
+```bash
+git@github.com:Abhishek-2502/Jenkins_Master_Slave.git
+```
+
+### Launch Method:
+1. Select **Launch agents via SSH**.
+2. Provide the following details:
+   - **Host**: Public IP of Slave EC2 instance.
+   - **Credentials**:
+     - **Domain**: `Global credentials (unrestricted)`
+     - **Kind**: `SSH Username with private key`
+     - **Scope**: `Global (Jenkins, nodes, items, all child items, etc)`
+     - **ID**: `master-slave`
+     - **Description**: `This is private ID of Jenkins master.`
+     - **Username**: `ubuntu` (EC2 default username)
+     - **Private Key**: Paste the private key of Jenkins master from `-----BEGIN OPENSSH PRIVATE KEY-----` to `-----END OPENSSH PRIVATE KEY-----`. (From Step 1)
+
+### Security and Availability:
+- **Host Key Verification Strategy**: `Non verifying Verification Strategy`
+- **Availability**: `Keep this agent online as much as possible`
 
 ## Step 4: Save and Test Connection
 1. Click **Save**.
