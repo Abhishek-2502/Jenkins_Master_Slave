@@ -29,12 +29,6 @@ This guide provides step-by-step instructions to set up a Jenkins Master-Slave a
 - **Labels**: `master_slave`
 - **Usage**: `Use this node as much as possible`
 
-### NOTE:
-Use git repo link while setting Jenkins as if your repo is private:
-```bash
-git@github.com:Abhishek-2502/Jenkins_Master_Slave.git
-```
-
 ### Launch Method:
 1. Select **Launch agents via SSH**.
 2. Provide the following details:
@@ -99,7 +93,13 @@ sudo systemctl restart jenkins
 ## Step 5: Setup Declarative Pipeline
 Follow this guide to setup Project in Jenkins Master using Declarative Pipeline: [Django_Notes_App_Docker_Jenkins_Declarative](https://github.com/Abhishek-2502/Django_Notes_App_Docker_Jenkins_Declarative)
 
-**Note:** Use SSH Key of Jenkins master (Step 4) while setting up pipeline.
+### NOTE:
+- Use git repo link while setting Jenkins as if your repo is private:
+```bash
+git@github.com:Abhishek-2502/Jenkins_Master_Slave.git
+```
+
+- Use SSH Key of Jenkins master (Step 4) while setting up pipeline.
 
 ## Author
 Abhishek Rajput
