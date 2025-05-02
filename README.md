@@ -88,7 +88,7 @@ sudo systemctl restart jenkins
 
 ### 7. **Use Keys**
 - Add public key (`cat ~/.ssh/id_ed25519.pub`) to **GitHub SSH and GPG Keys in Settings**.
-- Add private key (`cat ~/.ssh/id_ed25519`) in **Jenkins Credentials of Step 3**.
+- Add private key (`cat ~/.ssh/id_ed25519`) in **Credentials used for upcoming Declarative Pipeline**.
 
 ## Step 5: Setup Declarative Pipeline
 Follow this guide to setup Project in Jenkins Master using Declarative Pipeline: [Django_Notes_App_Docker_Jenkins_Declarative](https://github.com/Abhishek-2502/Django_Notes_App_Docker_Jenkins_Declarative)
