@@ -25,7 +25,7 @@ This guide provides step-by-step instructions to set up a Jenkins Master-Slave a
 ### General Settings:
 - **Description**: `This node is for Master Slave Architecture Testing.`
 - **Number of Executors**: `1` (Since t2.micro has 1 processor)
-- **Remote Root Directory**: `/home/ubuntu/`
+- **Remote Root Directory**: `/home/foldername/` (**NOTE:** foldername can be found using **pwd** command)
 - **Labels**: `master_slave`
 - **Usage**: `Use this node as much as possible`
 
@@ -39,7 +39,7 @@ This guide provides step-by-step instructions to set up a Jenkins Master-Slave a
      - **Scope**: `Global (Jenkins, nodes, items, all child items, etc)`
      - **ID**: `master-slave`
      - **Description**: `This is private key of slave.`
-     - **Username**: `ubuntu` (EC2 default username)
+     - **Username**: `username` (**NOTE:** username can be found using **whoami** command) (EC2 default username = ubuntu) 
      - **Private Key**: Paste the private key of slave from `-----BEGIN OPENSSH PRIVATE KEY-----` to `-----END OPENSSH PRIVATE KEY-----`. (Refer to **Step 2** of the guide: [Node_Todo_App_Docker_Jenkins_FreeStyle](https://github.com/Abhishek-2502/Node_Todo_App_Docker_Jenkins_FreeStyle))
 
 ### Security and Availability:
@@ -49,7 +49,8 @@ This guide provides step-by-step instructions to set up a Jenkins Master-Slave a
 ## Step 3: Save and Test Connection
 1. Click **Save**.
 2. Go to the **Nodes** section and ensure it is online.
-3. Run a test job on the slave node to verify the connection.
+3. If it is not online, then follow Step 4 and again check if it is online or not.
+4. Run a test job on the slave node to verify the connection.
 
 ## Step 4: Get SSH Key in Jenkins-Master (ed25519)
 To obtain the ed25519 private and public key of the EC2 instance,
