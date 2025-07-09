@@ -10,7 +10,7 @@ This guide provides step-by-step instructions to set up a Jenkins Master-Slave a
 - A configured **Slave Instance**.
 - Java installed on both Master and Slave.
 - Docker and Docker-Compose on Slave.
-- Follow this guide to install Jenkins, Java, Docker and Docker-Compose: [Java_Jenkins_Docker_Setup_AWS](https://github.com/Abhishek-2502/Java_Jenkins_Docker_Setup_AWS)
+- Follow this guide to install Jenkins, Java, Docker and Docker-Compose: [Java_Jenkins_Docker_Setup_Cloud](https://github.com/Abhishek-2502/Java_Jenkins_Docker_Setup_Cloud)
 
 ## Step 1: Get SSH Key in Jenkins-Master (ed25519)
 To obtain the ed25519 private and public key of the Jenkins-master instance,
