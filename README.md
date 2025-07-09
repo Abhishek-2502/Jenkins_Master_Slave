@@ -76,7 +76,7 @@ sudo cp ~/.ssh/id_ed25519* /var/lib/jenkins/.ssh/
 sudo ssh-keyscan github.com | sudo tee -a /var/lib/jenkins/.ssh/known_hosts
 ```
 
-### 5. **Add Slave to Known Hosts**
+### 5. **Add Slave to Known Hosts (Only if Step 3.3)**
 ```bash
 sudo -u jenkins ssh-keyscan slave_public_ip | sudo tee -a /var/lib/jenkins/.ssh/known_hosts > /dev/null
 ```
