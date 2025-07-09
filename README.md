@@ -76,18 +76,23 @@ sudo cp ~/.ssh/id_ed25519* /var/lib/jenkins/.ssh/
 sudo ssh-keyscan github.com | sudo tee -a /var/lib/jenkins/.ssh/known_hosts
 ```
 
-### 5. **Set more Permissions**
+### 5. **Add Slave to Known Hosts**
+```bash
+sudo -u jenkins ssh-keyscan slave_public_ip | sudo tee -a /var/lib/jenkins/.ssh/known_hosts > /dev/null
+```
+
+### 6. **Set more Permissions**
 ```bash
 sudo chmod 600 /var/lib/jenkins/.ssh/id_ed25519
 sudo chmod 644 /var/lib/jenkins/.ssh/id_ed25519.pub /var/lib/jenkins/.ssh/known_hosts
 ```
 
-### 6. **Restart Jenkins**
+### 7. **Restart Jenkins**
 ```bash
 sudo systemctl restart jenkins
 ```
 
-### 7. **Use Keys**
+### 8. **Use Keys**
 - Add public key (`cat ~/.ssh/id_ed25519.pub`) to **GitHub SSH and GPG Keys in Settings**.
 - Add private key (`cat ~/.ssh/id_ed25519`) in **Credentials used for upcoming Declarative Pipeline**.
 
